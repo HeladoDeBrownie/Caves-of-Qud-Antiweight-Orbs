@@ -1,6 +1,5 @@
 using System;
 using XRL.Rules;
-using XRL.UI;
 
 namespace XRL.World.Parts {
     [Serializable] public class helado_Unstable : IPart {
