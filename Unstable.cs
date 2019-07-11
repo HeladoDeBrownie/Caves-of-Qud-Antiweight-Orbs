@@ -8,6 +8,11 @@ namespace XRL.World.Parts {
         public const int EXPLODE_EACH_TURN_IMPROBABILITY = 10000;
 
         public void Destabilize () {
+            GameObject player = this.ParentObject.ThePlayer;
+
+            if (player.OnWorldMap()) {
+                player.PullDown(); }
+
             IPart.AddPlayerMessage ("The sphere destabilizes!");
             Event e = Event.New ("Explode", "Neutron", "1");
             e.AddParameter ("Force", 3000);
