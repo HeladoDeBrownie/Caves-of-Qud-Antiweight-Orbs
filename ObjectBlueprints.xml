@@ -9,5 +9,6 @@
         <part Name="TinkerItem" Bits="0000778" CanDisassemble="true" CanBuild="true" CanRepair="true"/>
         <tag Name="IgnoresGravity"/>
         <tag Name="Tier" Value="8"/>
+        <part Name="helado_Unstable"/>
     </object>
 </objects>
