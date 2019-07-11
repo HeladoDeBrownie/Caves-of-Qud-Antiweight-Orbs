@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects>
+    <object Name="helado_Large Sphere of Negative Weight" Inherits="Trinket">
+        <part Name="Render" DisplayName="&amp;clarge sphere of negative weight" RenderString="009" RenderLayer="5"/>
+        <part Name="Physics" Weight="-100"/>
+        <removepart Name="Commerce"/>
+        <part Name="Examiner" UnknownDisplayName="&amp;clarge trinket" AlternateDisplayName="large sphere" Complexity="5"/>
+        <part Name="Description" Short="It yearns keenly for sky, space, and entropy."/>
+        <part Name="TinkerItem" Bits="0000778" CanDisassemble="true" CanBuild="true" CanRepair="true"/>
+        <tag Name="IgnoresGravity"/>
+        <tag Name="Tier" Value="8"/>
+    </object>
+</objects>
