@@ -8,7 +8,13 @@ namespace XRL.World.Parts {
         public const int EXPLODE_EACH_TURN_IMPROBABILITY = 10000;
 
         public void Destabilize () {
-        Popup.Show ("[destabilize]"); }
+            IPart.AddPlayerMessage ("The sphere destabilizes!");
+            Event e = Event.New ("Explode", "Neutron", "1");
+            e.AddParameter ("Force", 3000);
+            e.AddParameter ("Owner", null);
+            e.AddParameter ("BonusDamage", "1d200");
+            this.ParentObject.FireEvent (e);
+            this.ParentObject.Destroy (false); }
 
         public override bool FireEvent (Event e) {
             if (e.ID == "BeforeApplyDamage") {
