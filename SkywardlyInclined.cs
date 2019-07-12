@@ -12,7 +12,7 @@ namespace XRL.World.Parts {
                     IPart.AddPlayerMessage ("The sphere floats away.");
                     this.ParentObject.Destroy (false); } }
             else if (haver.IsUnderSky ()) {
-                if (true /* TODO */) {
+                if (haver.GetPart<Inventory> ().GetWeight () <= -200) {
                     IPart.AddPlayerMessage ("[haver] floats away.");
                     haver.Destroy (false); } }
             return true; }
