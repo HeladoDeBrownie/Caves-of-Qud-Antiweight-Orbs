@@ -5,7 +5,8 @@ namespace XRL.World.Parts {
 
     public override bool FireEvent (Event e) {
         if (e.ID == "EndTurn") {
-            GameObject haver = null;
+            Physics p = this.ParentObject.pPhysics;
+            GameObject haver = p.InInventory ?? p.Equipped;
             if (haver == null) {
                 if (this.ParentObject.IsUnderSky ()) {
                     IPart.AddPlayerMessage ("The sphere floats away.");
