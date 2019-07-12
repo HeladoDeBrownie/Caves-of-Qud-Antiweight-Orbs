@@ -1,4 +1,5 @@
 using System;
+using XRL.UI;
 
 namespace XRL.World.Parts {
     [Serializable] public class helado_SkywardlyInclined : IPart {
@@ -10,11 +11,14 @@ namespace XRL.World.Parts {
             if (haver == null) {
                 if (this.ParentObject.IsUnderSky ()) {
                     IPart.AddPlayerMessage ("The sphere floats away.");
-                    this.ParentObject.Destroy (false); } }
+                    this.ParentObject.Destroy (); } }
             else if (haver.IsUnderSky ()) {
                 if (haver.GetPart<Inventory> ().GetWeight () <= -200) {
-                    IPart.AddPlayerMessage ("[haver] floats away.");
-                    haver.Destroy (false); } }
+                    if (haver.IsPlayer ()) {
+                        Popup.Show ("You float away and asphixiate in the void of space."); }
+                    else {
+                        IPart.AddPlayerMessage ("[haver] floats away."); }
+                    haver.Destroy ("Asphixiated in space."); } }
             return true; }
         return false; }
 
