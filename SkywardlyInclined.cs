@@ -24,7 +24,8 @@ namespace XRL.World.Parts {
                 if (this.ParentObject.IsUnderSky ()) {
                     FloatAway (this.ParentObject); } }
             else if (haver.IsUnderSky ()) {
-                if (haver.GetPart<Inventory> ().GetWeight () <= -200) {
+                if (haver.GetPart<Inventory> ().GetWeight () <=
+                    -haver.pPhysics.Weight) {
                     FloatAway (haver); } }
             return true; }
         return false; }
