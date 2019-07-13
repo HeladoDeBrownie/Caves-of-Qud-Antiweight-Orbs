@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <objects>
     <object Name="helado_Large Sphere of Negative Weight" Inherits="Trinket">
-        <part Name="Render" DisplayName="&amp;clarge sphere of negative weight" RenderString="009" RenderLayer="5" ColorString="&amp;c" Tile="large-sphere-of-negative-weight.png" DetailColor="C"/>
+        <part Name="Render" DisplayName="&amp;clarge sphere of neg&amp;Ma&amp;ctive weight" RenderString="009" RenderLayer="5" ColorString="&amp;c" Tile="large-sphere-of-negative-weight.png" DetailColor="C"/>
         <part Name="Physics" Weight="-100"/>
         <part Name="Commerce" Value="300"/>
         <part Name="Examiner" UnknownDisplayName="&amp;clarge trinket" AlternateDisplayName="&amp;clarge sphere" Complexity="5"/>
