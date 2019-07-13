@@ -12,4 +12,7 @@
         <part Name="helado_SkywardlyInclined"/>
         <part Name="helado_Unstable"/>
     </object>
+    <object Name="Small Sphere of Negative Weight" Load="Merge">
+        <part Name="helado_SkywardlyInclined"/>
+    </object>
 </objects>
