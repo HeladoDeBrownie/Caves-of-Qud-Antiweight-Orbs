@@ -14,11 +14,7 @@ namespace XRL.World.Parts {
                     this.ParentObject.Destroy (); } }
             else if (haver.IsUnderSky ()) {
                 if (haver.GetPart<Inventory> ().GetWeight () <= -200) {
-                    if (haver.IsPlayer ()) {
-                        Popup.Show ("You float away and asphixiate in the void of space."); }
-                    else {
-                        IPart.AddPlayerMessage ("[haver] floats away."); }
-                    haver.Destroy ("Asphixiated in space."); } }
+                    haver.FireEvent (Event.New ("Die", "Reason", "You floated away and asphixiated in the void of space.", "Accidental", 1)); } }
             return true; }
         return false; }
 
