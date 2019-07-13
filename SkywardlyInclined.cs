@@ -6,9 +6,14 @@ namespace XRL.World.Parts {
 
     public void FloatAway (GameObject go) {
         if (go.IsPlayer ()) {
-            go.FireEvent (Event.New ("Die", "Reason", "You floated away and asphixiated in the void of space.", "Accidental", 1)); }
+            go.FireEvent (Event.New ("Die",
+                "Reason",
+                    "You floated away and asphixiated in the void of space.",
+                "Accidental",
+                    1)); }
         else {
-            IPart.AddPlayerMessage (go.The + go.DisplayNameOnly + " floats away.");
+            IPart.AddPlayerMessage (go.The + go.DisplayNameOnly +
+                " floats away.");
             go.Destroy (); } }
 
     public override bool FireEvent (Event e) {
