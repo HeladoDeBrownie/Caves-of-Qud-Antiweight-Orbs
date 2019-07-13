@@ -10,11 +10,15 @@ namespace XRL.World.Parts {
             GameObject haver = p.InInventory ?? p.Equipped;
             if (haver == null) {
                 if (this.ParentObject.IsUnderSky ()) {
-                    IPart.AddPlayerMessage ("The sphere floats away.");
+                    IPart.AddPlayerMessage (this.ParentObject.the + this.ParentObject.DisplayNameOnly + " floats away.");
                     this.ParentObject.Destroy (); } }
             else if (haver.IsUnderSky ()) {
                 if (haver.GetPart<Inventory> ().GetWeight () <= -200) {
-                    haver.FireEvent (Event.New ("Die", "Reason", "You floated away and asphixiated in the void of space.", "Accidental", 1)); } }
+                    if (haver.IsPlayer ()) {
+                        haver.FireEvent (Event.New ("Die", "Reason", "You floated away and asphixiated in the void of space.", "Accidental", 1)); }
+                    else {
+                        IPart.AddPlayerMessage (haver.the + haver.DisplayNameOnly + " floats away.");
+                        haver.Destroy (true); } } }
             return true; }
         return false; }
 
