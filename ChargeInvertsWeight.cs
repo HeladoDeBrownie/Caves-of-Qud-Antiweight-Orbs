@@ -10,7 +10,12 @@ namespace XRL.World.Parts {
             switch (E.ID) {
             case "CellChanged":
             case "EndTurn":
-                Active = ParentObject.UseCharge (RequiredCharge);
+                var nowActive = ParentObject.UseCharge (RequiredCharge);
+
+                if (nowActive != Active) {
+                    ParentObject.FlushContextWeightCaches (); }
+
+                Active = nowActive;
                 break;
             case "GetWeight":
                 if (Active) {
