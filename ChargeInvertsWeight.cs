@@ -3,13 +3,14 @@ using System;
 namespace XRL.World.Parts {
     [Serializable] public class helado_ChargeInvertsWeight : IPart {
 
+        public int RequiredCharge = 60;
         public bool Active = false;
 
         public override bool FireEvent (Event E) {
             switch (E.ID) {
             case "CellChanged":
             case "EndTurn":
-                Active = ParentObject.UseCharge (60);
+                Active = ParentObject.UseCharge (RequiredCharge);
                 break;
             case "GetWeight":
                 if (Active) {
