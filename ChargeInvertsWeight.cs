@@ -13,7 +13,7 @@ namespace XRL.World.Parts {
                 break;
             case "GetWeight":
                 if (Active) {
-                    E.SetParameter ("Weight", -ParentObject.pPhysics._Weight);
+                    E.SetParameter ("Weight", -E.GetIntParameter ("Weight"));
                     return false; }
                 else {
                     goto default; }
