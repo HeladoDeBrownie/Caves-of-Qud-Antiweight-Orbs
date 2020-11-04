@@ -1,5 +1,6 @@
 using System;
 using XRL.Rules;
+using static XRL.UI.ConversationUI; // VariableReplace
 
 namespace XRL.World.Parts
 {
@@ -18,7 +19,10 @@ namespace XRL.World.Parts
                 player.PullDown();
             }
 
-            IPart.AddPlayerMessage("The sphere destabilizes!");
+            IPart.AddPlayerMessage(VariableReplace(
+                "=capitalize==subject.the==subject.name= =verb:explode=!",
+            ParentObject));
+
             ParentObject.Explode(Force: 3000, BonusDamage: "1d200");
             this.ParentObject.Destroy();
         }
