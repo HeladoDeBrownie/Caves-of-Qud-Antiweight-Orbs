@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <objects>
     <object Name="Small Sphere of Negative Weight" Load="Merge">
-        <part Name="Render" ColorString="&amp;c" Tile="small-sphere-of-negative-weight.png" DetailColor="C" />
-        <part Name="helado_SkywardlyInclined" />
+        <part Name="Render" ColorString="&amp;c" Tile="helado_small-sphere-of-negative-weight.png" DetailColor="C" />
+        <part Name="helado_AntiweightOrbs_SkywardlyInclined" />
 
         <tag Name="IgnoresGravity" />
     </object>
 
-    <object Name="helado_Large Sphere of Negative Weight" Inherits="Small Sphere of Negative Weight">
-        <part Name="Render" DisplayName="{{c|large sphere of neg{{M|a}}tive weight}}" Tile="large-sphere-of-negative-weight.png" />
+    <object Name="helado_Antiweight Orbs_Large Sphere of Negative Weight" Inherits="Small Sphere of Negative Weight">
+        <part Name="Render" DisplayName="{{c|large sphere of neg{{M|a}}tive weight}}" Tile="helado_large-sphere-of-negative-weight.png" />
         <part Name="Physics" Weight="100" />
         <part Name="Description" Short="It yearns keenly for sky, space, and entropy." />
         <part Name="Commerce" Value="120" />
         <part Name="Examiner" UnknownDisplayName="{{c|large trinket}}" AlternateDisplayName="{{c|large sphere}}" Complexity="5" />
         <part Name="Suspensor" Force="200" ChargeUse="0" />
         <part Name="TinkerItem" Bits="0000778" />
-        <part Name="helado_Unstable" />
+        <part Name="helado_AntiweightOrbs_Unstable" />
 
         <tag Name="Tier" Value="8" />
     </object>
 
-    <object Name="helado_Powered Sphere of Negative Weight" Inherits="Small Sphere of Negative Weight">
-        <part Name="Render" DisplayName="{{c|{{C|powered}} sphere of negative weight}}" ColorString="&amp;C" Tile="small-sphere-of-negative-weight.png" DetailColor="c" />
+    <object Name="helado_Antiweight Orbs_Powered Sphere of Negative Weight" Inherits="Small Sphere of Negative Weight">
+        <part Name="Render" DisplayName="{{c|{{C|powered}} sphere of negative weight}}" ColorString="&amp;C" Tile="helado_small-sphere-of-negative-weight.png" DetailColor="c" />
         <part Name="Description" Short="When active, this spherical device safely inverts the gravitational properties of its own constituent matter, changing its preference for the ground into one for the sky." />
         <part Name="Physics" Weight="25" />
         <part Name="Commerce" Value="60" />

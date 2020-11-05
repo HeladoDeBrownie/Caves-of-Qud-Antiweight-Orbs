@@ -3,7 +3,7 @@ using static XRL.UI.ConversationUI; // VariableReplace
 namespace XRL.World.Parts
 {
     [System.Serializable]
-    public class helado_SkywardlyInclined : IPart
+    public class helado_AntiweightOrbs_SkywardlyInclined : IPart
     {
 
         public void FloatAway(GameObject go)

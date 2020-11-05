@@ -5,7 +5,7 @@ using static XRL.UI.ConversationUI; // VariableReplace
 namespace XRL.World.Parts
 {
     [Serializable]
-    public class helado_Unstable : IPart
+    public class helado_AntiweightOrbs_Unstable : IPart
     {
         public const int EXPLODE_ON_HIT_IMPROBABILITY = 10;
         public const int EXPLODE_EACH_TURN_IMPROBABILITY = 10000;
