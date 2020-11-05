@@ -36,13 +36,16 @@ namespace XRL.World.Parts
                         var physics = ParentObject.pPhysics;
                         var holder = physics.InInventory ?? physics.Equipped;
 
-                        if (holder == null && ParentObject.IsUnderSky())
+                        if (holder == null)
                         {
-                            FloatAway(ParentObject);
+                            if (ParentObject.IsUnderSky())
+                            {
+                                FloatAway(ParentObject);
+                            }
                         }
                         else if (holder.IsUnderSky() && holder.Weight < 0)
                         {
-                                FloatAway(holder);
+                            FloatAway(holder);
                         }
                     }
 
