@@ -1,1 +1,8 @@
-{"workshopId":1802640961,"Title":"Antiweight Orbs","Description":"This mod adds two new types of sphere of negative weight — large and powered — and modifies the base-game small sphere of negative weight. All varieties are rare but can be built.\n\nBe careful, delver! The large variety are unstable and may explode! Powered ones, on the other hand, are safe but require a steady supply of energy, and all types will float off if given the chance.\n\nFind source and follow development at: https://bitbucket.org/HeladoDeBrownie/caves-of-qud-antiweight-orbs/","Tags":"item","Visibility":"2","ImagePath":"preview.png"}
+{
+    "workshopId": 1802640961,
+    "Title": "Antiweight Orbs",
+    "Description": "Do you want more variety in your selection of gravity-defying spheres? Look no further than this mod, which adds two new kinds: large and powered!\n\nBeware, delver! Large spheres of negative weight are highly unstable and may explode! And beware of the sky, which turns into a deadly drop if you're carrying too much negative weight!\n\nThis version of this mod was tested with Caves of Qud version 2.0.201.48 Early Access.\n\nSee more at:",
+    "Tags": "Artifact,Script",
+    "ImagePath": "preview.png",
+    "Visibility": "2"
+}
