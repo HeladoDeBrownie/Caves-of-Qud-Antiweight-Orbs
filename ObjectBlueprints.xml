@@ -1,39 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <objects>
-	<!-- Added Blueprints -->
+    <object Name="Small Sphere of Negative Weight" Load="Merge">
+        <part Name="Render" ColorString="&amp;c" Tile="small-sphere-of-negative-weight.png" DetailColor="C" />
+        <part Name="helado_SkywardlyInclined" />
 
-    <object Name="helado_Large Sphere of Negative Weight" Inherits="Trinket">
-        <part Name="Render" DisplayName="&amp;clarge sphere of neg&amp;Ma&amp;ctive weight&amp;y" RenderString="009" RenderLayer="5" ColorString="&amp;c" Tile="large-sphere-of-negative-weight.png" DetailColor="C"/>
-        <part Name="Physics" Weight="-100"/>
-        <part Name="Commerce" Value="300"/>
-        <part Name="Examiner" UnknownDisplayName="&amp;clarge trinket" AlternateDisplayName="&amp;clarge sphere" Complexity="5"/>
-        <part Name="Description" Short="It yearns keenly for sky, space, and entropy."/>
-        <part Name="TinkerItem" Bits="0000778" CanDisassemble="true" CanBuild="true" CanRepair="true"/>
-        <tag Name="IgnoresGravity"/>
-        <tag Name="Tier" Value="8"/>
-        <part Name="helado_SkywardlyInclined"/>
-        <part Name="helado_Unstable"/>
+        <tag Name="IgnoresGravity" />
     </object>
 
-	<object Name="helado_Powered Sphere of Negative Weight" Inherits="Trinket">
-        <part Name="Render" DisplayName="&amp;Cpowered&amp;c sphere of negative weight&amp;y" RenderString="009" RenderLayer="5" ColorString="&amp;C" Tile="small-sphere-of-negative-weight.png" DetailColor="c"/>
-        <part Name="Physics" Weight="25"/>
-        <part Name="Commerce" Value="100"/>
-        <part Name="Examiner" UnknownDisplayName="&amp;csmall trinket" AlternateDisplayName="&amp;csmall sphere" Complexity="4"/>
-        <part Name="Description" Short="When active, this spherical device safely inverts the gravitational properties of its own constituent matter, changing its preference for the ground into one for the sky."/>
-        <part Name="TinkerItem" Bits="00007" CanDisassemble="true" CanBuild="true" CanRepair="true"/>
-        <tag Name="IgnoresGravity"/>
-        <tag Name="Tier" Value="7"/>
+    <object Name="helado_Large Sphere of Negative Weight" Inherits="Small Sphere of Negative Weight">
+        <part Name="Render" DisplayName="{{c|large sphere of neg{{M|a}}tive weight}}" Tile="large-sphere-of-negative-weight.png" />
+        <part Name="Physics" Weight="100" />
+        <part Name="Description" Short="It yearns keenly for sky, space, and entropy." />
+        <part Name="Commerce" Value="120" />
+        <part Name="Examiner" UnknownDisplayName="{{c|large trinket}}" AlternateDisplayName="{{c|large sphere}}" Complexity="5" />
+        <part Name="Suspensor" Force="200" ChargeUse="0" />
+        <part Name="TinkerItem" Bits="0000778" />
+        <part Name="helado_Unstable" />
+
+        <tag Name="Tier" Value="8" />
+    </object>
+
+    <object Name="helado_Powered Sphere of Negative Weight" Inherits="Small Sphere of Negative Weight">
+        <part Name="Render" DisplayName="{{c|{{C|powered}} sphere of negative weight}}" ColorString="&amp;C" Tile="small-sphere-of-negative-weight.png" DetailColor="c" />
+        <part Name="Description" Short="When active, this spherical device safely inverts the gravitational properties of its own constituent matter, changing its preference for the ground into one for the sky." />
+        <part Name="Physics" Weight="25" />
+        <part Name="Commerce" Value="60" />
         <part Name="EnergyCellSocket" SlotType="EnergyCell" />
-        <part Name="helado_SkywardlyInclined"/>
-        <part Name="helado_ChargeInvertsWeight"/>
-	</object>
-
-	<!-- Modified Blueprints -->
-
-    <object Name="Small Sphere of Negative Weight" Load="Merge">
-        <part Name="Render" ColorString="&amp;c" Tile="small-sphere-of-negative-weight.png" DetailColor="C"/>
-        <part Name="Examiner" AlternateDisplayName="&amp;csmall sphere"/>
-        <part Name="helado_SkywardlyInclined"/>
+        <part Name="Examiner" Complexity="4" />
+        <part Name="Suspensor" Force="50" ChargeUse="60" />
+        <part Name="TinkerItem" Bits="000077" />
     </object>
 </objects>
