@@ -1,14 +1,16 @@
+using static XRL.UI.ConversationUI; // VariableReplace
+
 namespace XRL.World.Parts
 {
     [System.Serializable]
     public class helado_SkywardlyInclined : IPart
     {
 
-        public void FloatAway(GameObject Go)
+        public void FloatAway(GameObject go)
         {
-            if (Go.IsPlayer())
+            if (go.IsPlayer())
             {
-                Go.Die(
+                go.Die(
                     Killer: (GameObject)null,
                     Reason: "You floated away and asphixiated in the void of space.",
                     Accidental: true
@@ -16,48 +18,44 @@ namespace XRL.World.Parts
             }
             else
             {
-                IPart.AddPlayerMessage(Go.The + Go.DisplayNameOnly + " floats away!");
-                Go.Destroy();
+                IPart.AddPlayerMessage(VariableReplace(
+                    "=capitalize==subject.the==subject.name= =verb:float= away!",
+                go));
+
+                go.Destroy(Obliterate: true);
             }
         }
 
-        public override bool FireEvent(Event E)
+        public override bool FireEvent(Event @event)
         {
-            switch (E.ID)
+            switch (@event.ID)
             {
                 case "EndTurn":
-                    var p = ParentObject.pPhysics;
-
-                    if (p.Weight < 0)
+                    if (ParentObject.Weight < 0)
                     {
-                        var haver = p.InInventory ?? p.Equipped;
+                        var physics = ParentObject.pPhysics;
+                        var holder = physics.InInventory ?? physics.Equipped;
 
-                        if (haver == null)
+                        if (holder == null && ParentObject.IsUnderSky())
                         {
-                            if (ParentObject.IsUnderSky())
-                            {
-                                FloatAway(ParentObject);
-                            }
+                            FloatAway(ParentObject);
                         }
-                        else if (haver.IsUnderSky())
+                        else if (holder.IsUnderSky() && holder.Weight < 0)
                         {
-                            if (haver.pPhysics.Weight < 0)
-                            {
-                                FloatAway(haver);
-                            }
+                                FloatAway(holder);
                         }
                     }
 
                     return true;
 
                 default:
-                    return base.FireEvent(E);
+                    return base.FireEvent(@event);
             }
         }
 
-        public override void Register(GameObject Go)
+        public override void Register(GameObject go)
         {
-            Go.RegisterPartEvent(this, "EndTurn");
+            go.RegisterPartEvent(this, "EndTurn");
         }
     }
 }
