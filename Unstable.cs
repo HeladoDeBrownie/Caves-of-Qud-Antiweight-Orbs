@@ -12,8 +12,6 @@ namespace XRL.World.Parts
         public void Destabilize()
         {
             ThePlayer.PullDown();
-            ParentObject.Explode(Force: 3000, BonusDamage: "1d200");
-            ParentObject.Destroy();
 
             XDidY(
                 what: ParentObject,
@@ -21,6 +19,9 @@ namespace XRL.World.Parts
                 terminalPunctuation: "!",
                 ColorAsBadFor: ParentObject
             );
+
+            ParentObject.Explode(Force: 3000, BonusDamage: "1d200");
+            ParentObject.Destroy();
         }
 
         public override bool WantEvent(int id, int cascade)

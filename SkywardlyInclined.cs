@@ -29,17 +29,17 @@ namespace XRL.World.Parts
             }
             else
             {
-                floater.Destroy(
-                    Reason: DeathMessageFor(floater),
-                    Obliterate: true
-                );
-
                 XDidY(
                     what: floater,
                     verb: "float",
                     extra: "away",
                     terminalPunctuation: "!",
                     ColorAsBadFor: floater
+                );
+
+                floater.Destroy(
+                    Reason: DeathMessageFor(floater),
+                    Obliterate: true
                 );
             }
         }
