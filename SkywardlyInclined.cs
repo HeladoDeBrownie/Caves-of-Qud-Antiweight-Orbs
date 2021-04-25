@@ -1,64 +1,78 @@
-using static XRL.UI.ConversationUI; // VariableReplace
-
 namespace XRL.World.Parts
 {
     [System.Serializable]
     public class helado_AntiweightOrbs_SkywardlyInclined : IPart
     {
+        const string ASPHIXIATE_DEATH_MESSAGE = "You floated away and asphixiated in the void of space.";
+        const string GENERIC_DEATH_MESSAGE = "You floated away into the void of space.";
 
-        public void FloatAway(GameObject go)
+        public static string DeathMessageFor(GameObject dier)
         {
-            if (go.IsPlayer())
+            return CanBreathe(dier) ?
+                ASPHIXIATE_DEATH_MESSAGE :
+                GENERIC_DEATH_MESSAGE;
+        }
+
+        public static bool CanBreathe(GameObject what)
+        {
+            return what.IsAlive;
+        }
+
+        public void FloatAway(GameObject floater)
+        {
+            if (floater.IsPlayer())
             {
-                go.Die(
-                    Killer: (GameObject)null,
-                    Reason: "You floated away and asphixiated in the void of space.",
-                    Accidental: true
+                floater.Die(
+                    Reason: DeathMessageFor(floater),
+                    Accidental: true,
+                    Force: true
                 );
             }
             else
             {
-                IPart.AddPlayerMessage(VariableReplace(
-                    "=capitalize==subject.the==subject.name= =verb:float= away!",
-                go));
+                floater.Destroy(
+                    Reason: DeathMessageFor(floater),
+                    Obliterate: true
+                );
 
-                go.Destroy(Obliterate: true);
+                XDidY(
+                    what: floater,
+                    verb: "float",
+                    extra: "away",
+                    terminalPunctuation: "!",
+                    ColorAsBadFor: floater
+                );
             }
         }
 
-        public override bool FireEvent(Event @event)
+        public override bool WantEvent(int id, int cascade)
         {
-            switch (@event.ID)
+            return
+                id == EndTurnEvent.ID ||
+            base.WantEvent(id, cascade);
+        }
+
+        public override bool HandleEvent(EndTurnEvent @event)
+        {
+            if (ParentObject.Weight < 0)
             {
-                case "EndTurn":
-                    if (ParentObject.Weight < 0)
+                var physics = ParentObject.pPhysics;
+                var holder = physics.InInventory ?? physics.Equipped;
+
+                if (holder == null)
+                {
+                    if (ParentObject.IsUnderSky())
                     {
-                        var physics = ParentObject.pPhysics;
-                        var holder = physics.InInventory ?? physics.Equipped;
-
-                        if (holder == null)
-                        {
-                            if (ParentObject.IsUnderSky())
-                            {
-                                FloatAway(ParentObject);
-                            }
-                        }
-                        else if (holder.IsUnderSky() && holder.Weight < 0)
-                        {
-                            FloatAway(holder);
-                        }
+                        FloatAway(ParentObject);
                     }
-
-                    return true;
-
-                default:
-                    return base.FireEvent(@event);
+                }
+                else if (holder.IsUnderSky() && holder.Weight < 0)
+                {
+                    FloatAway(holder);
+                }
             }
-        }
 
-        public override void Register(GameObject go)
-        {
-            go.RegisterPartEvent(this, "EndTurn");
+            return true;
         }
     }
 }

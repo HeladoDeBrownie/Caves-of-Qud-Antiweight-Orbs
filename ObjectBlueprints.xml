@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <objects>
     <object Name="Small Sphere of Negative Weight" Load="Merge">
         <part Name="Render" ColorString="&amp;c" Tile="helado_small-sphere-of-negative-weight.png" DetailColor="C" />
@@ -11,10 +10,10 @@
         <part Name="Render" DisplayName="{{c|large sphere of neg{{M|a}}tive weight}}" Tile="helado_large-sphere-of-negative-weight.png" />
         <part Name="Physics" Weight="100" />
         <part Name="Description" Short="It yearns keenly for sky, space, and entropy." />
-        <part Name="Commerce" Value="120" />
+        <part Name="Commerce" Value="90" />
         <part Name="Examiner" UnknownDisplayName="{{c|large trinket}}" AlternateDisplayName="{{c|large sphere}}" Complexity="5" />
         <part Name="Suspensor" Force="200" ChargeUse="0" />
-        <part Name="TinkerItem" Bits="0000778" />
+        <part Name="TinkerItem" Bits="00008" />
         <part Name="helado_AntiweightOrbs_Unstable" />
 
         <tag Name="Tier" Value="8" />
@@ -28,6 +27,6 @@
         <part Name="EnergyCellSocket" SlotType="EnergyCell" />
         <part Name="Examiner" Complexity="4" />
         <part Name="Suspensor" Force="50" ChargeUse="60" />
-        <part Name="TinkerItem" Bits="000077" />
+        <part Name="TinkerItem" Bits="00067" />
     </object>
 </objects>

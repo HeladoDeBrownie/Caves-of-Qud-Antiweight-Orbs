@@ -1,10 +1,9 @@
-using System;
+// TODO: Replace Stat.Random calls with per-object RNG.
 using XRL.Rules;
-using static XRL.UI.ConversationUI; // VariableReplace
 
 namespace XRL.World.Parts
 {
-    [Serializable]
+    [System.Serializable]
     public class helado_AntiweightOrbs_Unstable : IPart
     {
         public const int EXPLODE_ON_HIT_IMPROBABILITY = 10;
@@ -12,49 +11,44 @@ namespace XRL.World.Parts
 
         public void Destabilize()
         {
-            GameObject player = this.ParentObject.ThePlayer;
-
-            if (player.OnWorldMap())
-            {
-                player.PullDown();
-            }
-
-            IPart.AddPlayerMessage(VariableReplace(
-                "=capitalize==subject.the==subject.name= =verb:explode=!",
-            ParentObject));
-
+            ThePlayer.PullDown();
             ParentObject.Explode(Force: 3000, BonusDamage: "1d200");
-            this.ParentObject.Destroy();
+            ParentObject.Destroy();
+
+            XDidY(
+                what: ParentObject,
+                verb: "explode",
+                terminalPunctuation: "!",
+                ColorAsBadFor: ParentObject
+            );
         }
 
-        public override bool FireEvent(Event e)
+        public override bool WantEvent(int id, int cascade)
         {
-            if (e.ID == "BeforeApplyDamage")
-            {
-                if (Stat.Random(1, EXPLODE_ON_HIT_IMPROBABILITY) <= 1)
-                {
-                    Destabilize();
-                }
-                return true;
-            }
-            else if (e.ID == "EndTurn")
-            {
-                if (Stat.Random(1, EXPLODE_EACH_TURN_IMPROBABILITY) <= 1)
-                {
-                    Destabilize();
-                }
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return
+                id == BeforeApplyDamageEvent.ID ||
+                id == EndTurnEvent.ID ||
+            base.WantEvent(id, cascade);
         }
 
-        public override void Register(GameObject go)
+        public override bool HandleEvent(BeforeApplyDamageEvent @event)
         {
-            go.RegisterPartEvent(this, "BeforeApplyDamage");
-            go.RegisterPartEvent(this, "EndTurn");
+            if (Stat.Random(1, EXPLODE_ON_HIT_IMPROBABILITY) <= 1)
+            {
+                Destabilize();
+            }
+
+            return true;
+        }
+
+        public override bool HandleEvent(EndTurnEvent @event)
+        {
+            if (Stat.Random(1, EXPLODE_EACH_TURN_IMPROBABILITY) <= 1)
+            {
+                Destabilize();
+            }
+
+            return true;
         }
     }
 }
