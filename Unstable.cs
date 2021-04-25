@@ -51,5 +51,9 @@ namespace XRL.World.Parts
 
             return true;
         }
+
+        public override bool SameAs(IPart part) {
+            return false;
+        }
     }
 }
