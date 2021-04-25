@@ -24,8 +24,7 @@ namespace XRL.World.Parts
             {
                 floater.Die(
                     Reason: DeathMessageFor(floater),
-                    Accidental: true,
-                    Force: true
+                    Accidental: true
                 );
             }
             else
