@@ -26,7 +26,6 @@
     <encountertable Name="Artifact 4R" Load="Merge">
         <objects>
             <object Chance="10" Number="1d1" Blueprint="helado_Antiweight Orbs_Powered Sphere of Negative Weight"/>
-            <object Chance="5" Number="1d1" Blueprint="helado_Antiweight Orbs_Large Sphere of Negative Weight"/>
         </objects>
     </encountertable>
 
@@ -38,7 +37,7 @@
 
     <encountertable Name="Artifact 6R" Load="Merge">
         <objects>
-            <object Chance="10" Number="1d1" Blueprint="helado_Antiweight Orbs_Large Sphere of Negative Weight"/>
+            <object Chance="5" Number="1d1" Blueprint="helado_Antiweight Orbs_Large Sphere of Negative Weight"/>
         </objects>
     </encountertable>
 
