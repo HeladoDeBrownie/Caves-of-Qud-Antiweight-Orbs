@@ -50,7 +50,12 @@ namespace XRL.World.Parts
                 physics.Equipped ??
                 ParentObject;
 
-            if (floater != null && floater.IsUnderSky() && floater.Weight < 0)
+            if (
+                floater != null &&
+                !floater.IsInGraveyard() &&
+                floater.IsUnderSky() &&
+                floater.Weight < 0
+            )
             {
                 FloatAway(floater);
             }
