@@ -8,14 +8,9 @@ namespace XRL.World.Parts
 
         public static string DeathMessageFor(GameObject dier)
         {
-            return CanBreathe(dier) ?
+            return dier.Respires ?
                 ASPHIXIATE_DEATH_MESSAGE :
                 GENERIC_DEATH_MESSAGE;
-        }
-
-        public static bool CanBreathe(GameObject what)
-        {
-            return what.IsAlive;
         }
 
         public void FloatAway(GameObject floater)
