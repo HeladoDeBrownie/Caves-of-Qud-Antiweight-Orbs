@@ -6,19 +6,14 @@ namespace XRL.World.Parts
         const string ASPHIXIATE_DEATH_MESSAGE = "You floated away and asphixiated in the void of space.";
         const string GENERIC_DEATH_MESSAGE = "You floated away into the void of space.";
 
-        public static string DeathMessageFor(GameObject dier)
+        public static void FloatAway(GameObject floater)
         {
-            return dier.Respires ?
-                ASPHIXIATE_DEATH_MESSAGE :
-                GENERIC_DEATH_MESSAGE;
-        }
+            var deathMessage = GetDeathMessageFor(floater);
 
-        public void FloatAway(GameObject floater)
-        {
             if (floater.IsPlayer())
             {
                 floater.Die(
-                    Reason: DeathMessageFor(floater),
+                    Reason: deathMessage,
                     Accidental: true
                 );
             }
@@ -33,9 +28,31 @@ namespace XRL.World.Parts
                 );
 
                 floater.Destroy(
-                    Reason: DeathMessageFor(floater),
+                    Reason: deathMessage,
                     Obliterate: true
                 );
+            }
+        }
+
+        public static string GetDeathMessageFor(GameObject dier)
+        {
+            return dier.Respires ?
+                ASPHIXIATE_DEATH_MESSAGE :
+                GENERIC_DEATH_MESSAGE;
+        }
+
+        public void CheckFloatingAway()
+        {
+            var physics = ParentObject.pPhysics;
+
+            var floater =
+                physics.InInventory ??
+                physics.Equipped ??
+                ParentObject;
+
+            if (floater != null && floater.IsUnderSky() && floater.Weight < 0)
+            {
+                FloatAway(floater);
             }
         }
 
@@ -48,24 +65,7 @@ namespace XRL.World.Parts
 
         public override bool HandleEvent(EndTurnEvent @event)
         {
-            if (ParentObject.Weight < 0)
-            {
-                var physics = ParentObject.pPhysics;
-                var holder = physics.InInventory ?? physics.Equipped;
-
-                if (holder == null)
-                {
-                    if (ParentObject.IsUnderSky())
-                    {
-                        FloatAway(ParentObject);
-                    }
-                }
-                else if (holder.IsUnderSky() && holder.Weight < 0)
-                {
-                    FloatAway(holder);
-                }
-            }
-
+            CheckFloatingAway();
             return true;
         }
     }
