@@ -3,7 +3,7 @@ namespace XRL.World.Parts
     [System.Serializable]
     public class helado_AntiweightOrbs_SkywardlyInclined : IPart
     {
-        const string ASPHIXIATE_DEATH_MESSAGE = "You floated away and asphixiated in the void of space.";
+        const string ASPHYXIATE_DEATH_MESSAGE = "You floated away and asphyxiated in the void of space.";
         const string GENERIC_DEATH_MESSAGE = "You floated away into the void of space.";
 
         public static void FloatAway(GameObject floater)
@@ -37,7 +37,7 @@ namespace XRL.World.Parts
         public static string GetDeathMessageFor(GameObject dier)
         {
             return dier.Respires ?
-                ASPHIXIATE_DEATH_MESSAGE :
+                ASPHYXIATE_DEATH_MESSAGE :
                 GENERIC_DEATH_MESSAGE;
         }
 
