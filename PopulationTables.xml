@@ -1,0 +1,55 @@
+<populations>
+    <population Name="Artifact 0R" Load="Merge">
+        <group Name="Items" Load="Merge">
+            <object Weight="5" Blueprint="helado_Antiweight Orbs_Powered Sphere of Negative Weight" />
+        </group>
+    </population>
+
+    <population Name="Artifact 1R" Load="Merge">
+        <group Name="Items" Load="Merge">
+            <object Weight="5" Blueprint="helado_Antiweight Orbs_Powered Sphere of Negative Weight" />
+        </group>
+    </population>
+
+    <population Name="Artifact 2R" Load="Merge">
+        <group Name="Items" Load="Merge">
+            <object Weight="10" Blueprint="helado_Antiweight Orbs_Powered Sphere of Negative Weight" />
+        </group>
+    </population>
+
+    <population Name="Artifact 3R" Load="Merge">
+        <group Name="Items" Load="Merge">
+            <object Weight="20" Blueprint="helado_Antiweight Orbs_Powered Sphere of Negative Weight" />
+        </group>
+    </population>
+
+    <population Name="Artifact 4R" Load="Merge">
+        <group Name="Items" Load="Merge">
+            <object Weight="10" Blueprint="helado_Antiweight Orbs_Powered Sphere of Negative Weight" />
+        </group>
+    </population>
+
+    <population Name="Artifact 5R" Load="Merge">
+        <group Name="Items" Load="Merge">
+            <object Weight="5" Blueprint="helado_Antiweight Orbs_Large Sphere of Negative Weight" />
+        </group>
+    </population>
+
+    <population Name="Artifact 6R" Load="Merge">
+        <group Name="Items" Load="Merge">
+            <object Weight="5" Blueprint="helado_Antiweight Orbs_Large Sphere of Negative Weight" />
+        </group>
+    </population>
+
+    <population Name="Artifact 7R" Load="Merge">
+        <group Name="Items" Load="Merge">
+            <object Weight="10" Blueprint="helado_Antiweight Orbs_Large Sphere of Negative Weight" />
+        </group>
+    </population>
+
+    <population Name="Artifact 8R" Load="Merge">
+        <group Name="Items" Load="Merge">
+            <object Weight="20" Blueprint="helado_Antiweight Orbs_Large Sphere of Negative Weight" />
+        </group>
+    </population>
+</populations>
