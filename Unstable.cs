@@ -1,16 +1,18 @@
-// TODO: Replace Stat.Random calls with per-object RNG.
-using XRL.Rules;
+using System; // Random
 
 namespace XRL.World.Parts
 {
     [System.Serializable]
     public class helado_AntiweightOrbs_Unstable : IPart
     {
-        public const int EXPLODE_ON_HIT_IMPROBABILITY = 10;
+        public const int EXPLODE_ON_DAMAGE_IMPROBABILITY = 10;
         public const int EXPLODE_EACH_TURN_IMPROBABILITY = 10000;
+
+        public Random RandomSource;
 
         public void Destabilize()
         {
+            // If we're traveling on the world map, take an unfortunate aside.
             ThePlayer.PullDown();
 
             XDidY(
@@ -20,8 +22,15 @@ namespace XRL.World.Parts
                 ColorAsBadFor: ParentObject
             );
 
-            ParentObject.Explode(Force: 3000, BonusDamage: "1d200");
-            ParentObject.Destroy();
+            // Much weaker than a flux explosion, but still pretty devastating.
+            ParentObject.Explode(Force: 3000, BonusDamage: "3d10+80");
+        }
+
+        public override void Attach()
+        {
+            RandomSource = XRL.Rules.Stat.GetSeededRandomGenerator(
+                $"helado_Antiweight Orbs_{ParentObject.id}"
+            );
         }
 
         public override bool WantEvent(int id, int cascade)
@@ -34,7 +43,7 @@ namespace XRL.World.Parts
 
         public override bool HandleEvent(BeforeApplyDamageEvent @event)
         {
-            if (Stat.Random(1, EXPLODE_ON_HIT_IMPROBABILITY) <= 1)
+            if (RandomSource.Next(1, EXPLODE_ON_DAMAGE_IMPROBABILITY) == 1)
             {
                 Destabilize();
             }
@@ -44,7 +53,7 @@ namespace XRL.World.Parts
 
         public override bool HandleEvent(EndTurnEvent @event)
         {
-            if (Stat.Random(1, EXPLODE_EACH_TURN_IMPROBABILITY) <= 1)
+            if (RandomSource.Next(1, EXPLODE_EACH_TURN_IMPROBABILITY) == 1)
             {
                 Destabilize();
             }
@@ -52,7 +61,9 @@ namespace XRL.World.Parts
             return true;
         }
 
-        public override bool SameAs(IPart part) {
+        // Don't stack; each item rolls separately to destabilize.
+        public override bool SameAs(IPart part)
+        {
             return false;
         }
     }
