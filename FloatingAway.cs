@@ -54,10 +54,10 @@ namespace XRL.World.Effects
             }
 
             XDidY(
-                what: Object,
-                verb: "float",
-                extra: "away",
-                terminalPunctuation: "!",
+                Actor: Object,
+                Verb: "float",
+                Extra: "away",
+                EndMark: "!",
                 ColorAsBadFor: Object
             );
 

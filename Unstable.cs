@@ -16,9 +16,9 @@ namespace XRL.World.Parts
             ThePlayer.PullDown();
 
             XDidY(
-                what: ParentObject,
-                verb: "explode",
-                terminalPunctuation: "!",
+                Actor: ParentObject,
+                Verb: "explode",
+                EndMark: "!",
                 ColorAsBadFor: ParentObject
             );
 
