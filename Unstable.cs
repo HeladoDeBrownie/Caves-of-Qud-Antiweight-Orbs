@@ -50,7 +50,6 @@ namespace XRL.World.Parts
         // TurnTick.
         public override void TurnTick(long TimeTick, int Amount)
         {
-            AddPlayerMessage(Amount.ToString());
             for (int turns = 0; turns < Amount; turns++)
             {
                 ProcessTurn();
